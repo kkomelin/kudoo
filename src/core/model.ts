@@ -1,11 +1,13 @@
-const knex = require('../db/knex');
+import knex from '../db/knex';
 
 class Model {
-  constructor(tableName) {
+  private tableName: string;
+
+  constructor(tableName: string) {
     this.tableName = tableName;
   }
 
-  insert(record) {
+  insert(record: object) {
     return knex(this.tableName)
       .insert(record);
   }
@@ -23,6 +25,4 @@ class Model {
   }
 }
 
-module.exports = {
-  Model
-}
+export default Model;

@@ -1,12 +1,13 @@
-const { App, ExpressReceiver } = require('@slack/bolt');
-const { Core } = require('./core/core');
-const { Kudos } = require('./models/kudos');
-const { ephemeralMessage } = require('./core/helpers');
-require('dotenv').config();
+import { App, ExpressReceiver } from '@slack/bolt';
+import dotenv from 'dotenv';
+import Core from './core/core';
+import { ephemeralMessage } from './core/helpers';
+import Kudos from './models/kudos';
+dotenv.config();
 
 // Create a Bolt Receiver.
-const receiver = new ExpressReceiver({ 
-  signingSecret: process.env.SLACK_SIGNING_SECRET 
+const receiver:ExpressReceiver = new ExpressReceiver({ 
+  signingSecret: process.env.SLACK_SIGNING_SECRET || ''
 });
 
 const app = new App({
@@ -39,12 +40,12 @@ receiver.router.get('/stats', (req, res) => {
 
   const kudos = new Kudos();
   kudos.stats()
-    .then(records => {
-      res.contentType = 'application/json';
+    .then((records: any) => {
+      res.type('application/json');
       res.send(records);
       res.end();
     })
-    .catch(error => {
+    .catch((error:any) => {
       console.error(error);
       res.status(404)
       .send('Not Found')

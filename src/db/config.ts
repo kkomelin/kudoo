@@ -1,17 +1,22 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+import Knex from 'knex';
+dotenv.config();
 
-module.exports = {
+export interface IKnexConfigs {
+  [key: string]: Knex.Config;
+};
 
-  // development: {
+const knexConfigs: IKnexConfigs = {
+   // development: {
   //   client: 'sqlite3',
   //   connection: {
   //     filename: './dev.sqlite3'
   //   },
   // migrations: {
-  //   directory: __dirname + '/db/migrations',
+  //   directory: __dirname + '/migrations',
   // },
   // seeds: {
-  //   directory: __dirname + '/db/seeds'
+  //   directory: __dirname + '/seeds'
   // },
   //   useNullAsDefault: true
   // },
@@ -25,10 +30,10 @@ module.exports = {
       password: process.env.DB_PASSWORD
     },
     migrations: {
-      directory: __dirname + '/db/migrations',
+      directory: __dirname + '/migrations',
     },
     seeds: {
-      directory: __dirname + '/db/seeds'
+      directory: __dirname + '/seeds'
     }
   },
 
@@ -40,10 +45,10 @@ module.exports = {
       password: 'password'
     },
     migrations: {
-      directory: __dirname + '/db/migrations',
+      directory: __dirname + '/migrations',
     },
     seeds: {
-      directory: __dirname + '/db/seeds'
+      directory: __dirname + '/seeds'
     }
   },
 
@@ -55,10 +60,10 @@ module.exports = {
       password: 'password'
     },
     migrations: {
-      directory: __dirname + '/db/migrations',
+      directory: __dirname + '/migrations',
     },
     seeds: {
-      directory: __dirname + '/db/seeds'
+      directory: __dirname + '/seeds'
     }
   },
 
@@ -71,4 +76,6 @@ module.exports = {
       directory: './tests/seeds'
     }
   }
-};
+}
+
+export default knexConfigs;

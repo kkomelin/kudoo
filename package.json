@@ -2,11 +2,17 @@
   "name": "kudoo",
   "version": "1.0.0",
   "description": "/kudoo Slack command",
-  "main": "server.js",
+  "main": "src/index.ts",
   "scripts": {
+    "build": "rimraf ./build && tsc",
+    "start": "yarn run build && node build/index.js",
+    "start:dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "knex": "knex",
-    "start": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:seed:run": "yarn run knex --knexfile src/db/config.ts seed:run",
+    "db:migrate:make": "yarn run knex --knexfile src/db/config.ts -x ts migrate:make",
+    "db:migrate:latest": "yarn run knex --knexfile src/db/config.ts migrate:latest",
+    "db:migrate:rollback": "yarn run knex --knexfile src/db/config.ts migrate:rollback"
   },
   "author": "Konstantin Komelin <konstantin.komelin@gmail.com>",
   "license": "UNLICENSED",
@@ -16,5 +22,11 @@
     "knex": "^0.21.14",
     "mysql2": "^2.2.5",
     "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/knex": "^0.16.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   }
 }
