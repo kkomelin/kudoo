@@ -1,5 +1,5 @@
 import Knex from 'knex';
-import knexConfigs from './config';
+import knexConfigs from './knexConfig';
 
 const environment: string = process.env.ENVIRONMENT || 'development';
 const config: Knex.Config = knexConfigs[environment];

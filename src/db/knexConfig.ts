@@ -1,6 +1,12 @@
+import { resolve } from 'app-root-path';
 import dotenv from 'dotenv';
 import Knex from 'knex';
-dotenv.config();
+
+var configPath = resolve('/.env');
+
+dotenv.config({ 
+  path: configPath
+});
 
 export interface IKnexConfigs {
   [key: string]: Knex.Config;
@@ -33,7 +39,7 @@ const knexConfigs: IKnexConfigs = {
       directory: __dirname + '/migrations',
     },
     seeds: {
-      directory: __dirname + '/seeds'
+      directory: __dirname +  '/seeds'
     }
   },
 
@@ -73,7 +79,7 @@ const knexConfigs: IKnexConfigs = {
       filename: ':memory:'
     },
     seeds: {
-      directory: './tests/seeds'
+      directory: __dirname + '/tests/seeds'
     }
   }
 }
