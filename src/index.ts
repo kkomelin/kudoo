@@ -2,6 +2,7 @@ import { App, ExpressReceiver } from '@slack/bolt';
 import dotenv from 'dotenv';
 import Core from './core/core';
 import { ephemeralMessage } from './core/helpers';
+import { healthCheckQuery } from './db/helper';
 import Kudos from './models/kudos';
 dotenv.config();
 
@@ -36,7 +37,7 @@ app.command('/kudoo', async ({ command, ack, respond }) => {
 });
 
 // Other web requests are methods.
-receiver.router.get('/stats', (req, res) => {
+receiver.router.get('/stats', async (req, res) => {
 
   const kudos = new Kudos();
   kudos.stats()
@@ -53,10 +54,19 @@ receiver.router.get('/stats', (req, res) => {
     });  
 });
 
-receiver.router.get('/health-check', (req, res) => {
-  res.status(200)
-    .send('OK')
-    .end();  
+receiver.router.get('/healthcheck', async (req, res) => {
+  try {
+    await healthCheckQuery();
+    
+    return res.status(200)
+      .send('OK')
+      .end();
+  }
+  catch {
+    return res.status(404)
+      .send('Not Found')
+      .end(); 
+  }
 });
 
 (async () => {
