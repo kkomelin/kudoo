@@ -13,7 +13,7 @@ services:
     ports: 
       - "3306:3306"
   web:
-    image: kudoo
+    image: kkomelin/kudoo
     depends_on: 
       - db
     ports: 
