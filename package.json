@@ -9,16 +9,19 @@
     "start:dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "knex": "knex",
-    "db:seed:run": "yarn run knex --knexfile src/db/knexConfig.ts seed:run",
-    "db:migrate:make": "yarn run knex --knexfile src/db/knexConfig.ts migrate:make",
-    "db:migrate:latest": "yarn run knex --knexfile src/db/knexConfig.ts migrate:latest",
-    "db:migrate:rollback": "yarn run knex --knexfile src/db/knexConfig.ts migrate:rollback"
+    "db:seed:run": "yarn run knex --knexfile build/db/knexConfig.js seed:run",
+    "db:migrate:make": "yarn run knex --knexfile build/db/knexConfig.js migrate:make",
+    "db:migrate:latest": "yarn run knex --knexfile build/db/knexConfig.js migrate:latest",
+    "db:migrate:rollback": "yarn run knex --knexfile build/db/knexConfig.js migrate:rollback"
   },
   "author": "Konstantin Komelin <konstantin.komelin@gmail.com>",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kkomelin/kudoo.git"
+  },
   "dependencies": {
     "@slack/bolt": "^2.5.0",
-    "@types/app-root-path": "^1.2.4",
     "app-root-path": "^3.0.0",
     "dotenv": "^8.2.0",
     "knex": "^0.21.14",
@@ -26,6 +29,7 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
     "@types/knex": "^0.16.1",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",

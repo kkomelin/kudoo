@@ -53,6 +53,12 @@ receiver.router.get('/stats', (req, res) => {
     });  
 });
 
+receiver.router.get('/health-check', (req, res) => {
+  res.status(200)
+    .send('OK')
+    .end();  
+});
+
 (async () => {
   const port = process.env.PORT || 3000;
 
