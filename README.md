@@ -6,6 +6,26 @@
 docker build -t kkomelin/kudoo .
 ```
 
+## Push the container to DigitalOcean registry
+
+Use the registry login command to authenticate Docker with your registry:
+
+```bash
+doctl registry login
+```
+
+Use the docker tag command to tag your image with the fully qualified destination path:
+
+```bash
+docker tag kkomelin/kudoo:v0.0.1 registry.digitalocean.com/kkomelin/kudoo
+```
+
+Use the docker push command to upload your image:
+
+```bash
+docker push registry.digitalocean.com/kkomelin/kudoo
+```
+
 ## Installation
 
 ```bash
