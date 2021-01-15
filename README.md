@@ -29,7 +29,8 @@ docker push registry.digitalocean.com/kkomelin/kudoo
 ## Installation
 
 ```bash
-docker-compose up -d
+rm -rf ./_data # if needed
+docker-compose up -d # with --force-recreate if needed
 docker exec -it kudoo_web_1 yarn run db:migrate:latest
 ```
 
