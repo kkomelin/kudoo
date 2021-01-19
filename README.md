@@ -20,9 +20,9 @@ What does it bring to my team?
 docker build -t kkomelin/kudoo .
 ```
 
-### Push the image to a Docker image registry
+### Push the image to a Docker container registry
 
-_Feel free to publish your image to any available Docker repository, either public or private. 
+_Feel free to publish your image to any available Docker container registry, either public or private. 
 I've chosen [DigitalOcean](https://m.do.co/c/4062673fae32) just for my own convenience._
 
 Authenticate Docker with your registry:
