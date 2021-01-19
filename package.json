@@ -1,7 +1,7 @@
 {
   "name": "kudoo",
   "version": "0.1.0",
-  "description": "/kudoo Slack command",
+  "description": "A Slack app backend which adds /kudoo command.",
   "main": "src/index.ts",
   "scripts": {
     "build": "rimraf ./build && tsc",
