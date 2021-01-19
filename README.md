@@ -56,7 +56,7 @@ docker-compose up -d
 docker exec -it kudoo_web_1 yarn run db:migrate:latest
 ```
 
-### Setup Firewall rules
+### Setup firewall rules
 
 ```bash
 ufw allow in 3000
