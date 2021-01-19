@@ -62,7 +62,7 @@ docker exec -it kudoo_web_1 yarn run db:migrate:latest
 ufw allow in 3000
 ```
 
-### Check status
+### Check app status
 
 ```bash
 wget -q -O - http://localhost:3000/healthcheck
