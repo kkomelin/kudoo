@@ -48,7 +48,7 @@ docker push registry.digitalocean.com/kkomelin/kudoo
 ### Install the app
 
 ```bash
-# Remove database files when need to reset the app.
+# [Optional] Remove database files when need to reset the app.
 rm -rf ./_data
 # Run the containers.
 docker-compose up -d
